@@ -154,7 +154,7 @@ async function pollTodayAttendance() {
 // ==========================================================
 // 4️⃣ SCHEDULER (7:30 PM – 7:40 PM IST)
 // ==========================================================
-cron.schedule("50-55 15 * * *", async () => {
+cron.schedule("45-55 19 * * *", async () => {
     const nowIST = dayjs().tz(IST).format("HH:mm:ss");
     console.log(`⏰ Scheduled run at IST: ${nowIST}`);
 
