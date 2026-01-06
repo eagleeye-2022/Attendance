@@ -154,12 +154,19 @@ async function pollTodayAttendance() {
 // ==========================================================
 // 4️⃣ SCHEDULER (7:30 PM – 7:40 PM IST)
 // ==========================================================
-cron.schedule("45-55 19 * * *", async () => {
-    const nowIST = dayjs().tz(IST).format("HH:mm:ss");
-    console.log(`⏰ Scheduled run at IST: ${nowIST}`);
+cron.schedule(
+  "30-45 15 * * *",
+  async () => {
+    const nowIST = dayjs().tz("Asia/Kolkata").format("HH:mm:ss");
+    console.log("⏰ Cron triggered at IST:", nowIST);
 
     await refreshZohoToken();
     await pollTodayAttendance();
-});
+  },
+  {
+    timezone: "Asia/Kolkata"
+  }
+);
+
 
 console.log("⏳ Scheduler started. Script will run daily from 7:30 PM to 7:40 PM IST.");
